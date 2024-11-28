@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=devices-width, initial-scale=1.0">
+    <title> Music Player </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/f24c2122ab.js" crossorigin="anonymous"></script>
+<style>
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+
+    font-family: 'Poppins', sans-serif;
+    background-image: url(https://thumbs.dreamstime.com/b/old-fashioned-turntable-vinyl-record-player-disc-needle-vintage-retro-music-audio-equipment-concept-s-high-quality-photo-323284004.jpg);
+    background-size: cover;
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(40, 37, 37);
+}
+  
+
+  
+  .container {
+    height: 100%;
+    padding: 25px;
+    border: 2px solid #000;
+    border-radius: 36px;
+    box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.8);
+    border: 10px solid #CDC1FF;
+    
+  }
+  
+  /* Music Player Styles */
+  
+  .music-player {
+  height: 100%;
+    
+    width: 400px;
+    padding: 25px 35px;
+    text-align: center;
+  }
+  
+  .music-player h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #fffefe;
+    margin-top: 20px;
+  }
+  
+  .music-player p {
+    font-size: 14px;
+    color: white;
+    font-weight: 700;
+    margin-top: 7px;
+  }
+  
+  /* Navigation Styles */
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  nav .circle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+    color: #CDC1FF;
+    box-shadow: 0 5px 10px rgba(255, 26, 26, 0.22);
+  }
+  
+  /* Song Image Styles */
+  
+  .song-img {
+    width: 250px;
+    padding: 15px;
+   
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0px 0px 8px pink;
+    font-size: 15px;
+    text-align: right;
+    border: 5px solid rgba(244, 11, 166, 0.717);
+    color:white;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    height: 220px;
+    border-radius: 50%;
+  }
+  
+  .song-img:hover {
+    transform: rotate(360deg);
+  }
+  
+  .playing {
+    animation: rotate360 4s linear infinite;
+  }
+  
+  @keyframes rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Progress Bar Styles */
+  
+  #progress {
+    -webkit-appearance : none;
+    width: 100%;
+    height: 6px;
+    background: #CDC1FF;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px 0;
+  }
+  
+  #progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    box-shadow: 0 5px 5px rgba(19, 8, 8, 0.22);
+  }
+  
+  /* Controls Styles */
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .controls div {
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #CDC1FF;
+    box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
+  }
+  
+  .controls div:nth-child(2) {
+    transform: scale(1.5);
+    background: #CDC1FF;
+    color: white;
+  }
+  #vol{
+    width: 35%;
+    margin:  2%;
+   
+}
+#vol {
+    -webkit-appearance : none;
+     height: 6px;
+    background: #CDC1FF;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #vol::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    box-shadow: 0 5px 5px rgba(19, 8, 8, 0.22);
+  }
+.fix{
+    width: 100%;
+    
+    
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+@media (max-width: 768px) {
+            .song-img {
+                width: 180px;
+                height: 180px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            nav .circle {
+                width: 45px;
+                height: 45px;
+            }
+
+            .controls div {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .song-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+            }
+
+            #progress, #vol {
+                height: 6px;
+            }
+
+            .controls div {
+                width: 40px;
+                height: 40px;
+            }
+        }
+</style>
+</head>
+<body>
+ <div class="container">
+ <div class="music-player">
+    <nav>
+        <div class="circle">
+            <a href="MusicPlayer2.html"> <i class="fa-solid fa-angles-left"></i> </a>
+          </div>
+          <div class="circle">
+              <a href="MusicPlayer2.html"> <i class="fa-solid fa-bars"></i> </a>
+          </div>
+    </nav>
+    <img src="https://cover.djpunjab.is/55771/300x700/four-me-ep-karan-aujla.webp" class="song-img">
+    <h1>Karan Aujla</h1>
+    <p>Antidote</p>
+
+    <audio id="song">
+        <source src="Antidote(KoshalWorld.Com).mp3" type="audio/mpeg">
+    </audio>
+    <input type="range" value="0" id="progress">
+    <div class="vol fix center">
+      <p class="low_vol"><i style="font-size: 14px;" class="fa-solid fa-volume-high"></i></p>
+      <input id="vol" type="range" oninput="volume()" step="0.01" value='1' min="0" max="1">
+      <p class="high_vol"><i style="font-size: 20px;" class="fa-solid fa-volume-high"></i></p>
+  </div>
+
+    <div class="controls">
+    <div><a href="MusicPlayer1.html"> <i class="fa-solid fa-backward"></i> </a></div>
+    <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+    <div><a href="MusicPlayer3.html"><i class="fa-solid fa-forward"></i> </a></div>
+
+    </div>
+ </div>
+
+ </div>
+
+ <script>
+
+let progress = document.getElementById("progress");
+let song = document.getElementById("song");
+let ctrlIcon = document.getElementById("ctrlIcon");
+let volume_slider = document.querySelector('.volume_slider');
+
+
+song.onloadedmetadata= function(){
+ progress.max =song.duration;
+ progress.value =song.currentTime;
+}
+
+function playPause(){
+    if(ctrlIcon.classList.contains("fa-pause")){
+       song.pause();
+       ctrlIcon.classList.remove("fa-pause");
+       ctrlIcon.classList.add("fa-play");
+    }
+    else{
+       song.play();
+       ctrlIcon.classList.add("fa-pause");
+       ctrlIcon.classList.remove("fa-play");
+    }
+}
+
+if(song.play()){
+   setInterval(()=>{
+       progress.value=song.currentTime;
+   },500);
+}
+
+
+progress.onchange = function(){
+   song.play();
+   song.currentTime = progress.value;
+   ctrlIcon.classList.add("fa-pause");
+   ctrlIcon.classList.remove("fa-play");
+}
+function setVolume(){
+    curr_track.volume = volume_slider.value / 100;
+}
+
+ </script>
+</body>
+</html>

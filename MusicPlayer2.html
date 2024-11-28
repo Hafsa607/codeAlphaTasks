@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+
+    font-family: 'Poppins', sans-serif;
+    background-image: url(https://thumbs.dreamstime.com/b/old-fashioned-turntable-vinyl-record-player-disc-needle-vintage-retro-music-audio-equipment-concept-s-high-quality-photo-323284004.jpg);
+    background-size: cover;
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(40, 37, 37);
+}
+  
+
+  
+  .container {
+    height: 100%;
+    padding: 25px;
+    border: 2px solid #000;
+    border-radius: 36px;
+    box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.8);
+    border: 10px solid #CDC1FF;
+    
+  }
+  
+  /* Music Player Styles */
+  
+  .music-player {
+  height: 100%;
+    
+    width: 400px;
+    padding: 5px 10px;
+    text-align: center;
+  }
+  
+  
+.song-details {
+    flex: 1;
+    
+}
+
+.song-details h2 {
+    font-size: 1.2em;
+    margin: 5px;
+    text-align: center;
+    color: #fff;
+  
+}
+
+.song-details p {
+    margin: 10px 0;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+
+
+
+
+.song-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0;
+    border-top: 1px solid white;
+}
+
+.song-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px ;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: #fff;
+}
+
+.song-list li:hover {
+    background-color: #CDC1FF;
+   
+}
+
+.song-list img {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    
+}
+
+.song-list span {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.duration {
+    color: white;
+    text-align: right;
+}
+  
+ 
+  
+ 
+@media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                max-width: 350px;
+            }
+
+            .song-list li {
+                padding: 10px 5px;
+               
+            }
+
+            .song-list img {
+                width: 40px;
+                height: 40px;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .duration {
+                font-size: 0.8em;
+                margin-right: 40%;
+            }
+            .song-details {
+                margin-right: 40%;
+            }
+            .song-list li:hover {
+   
+              margin-right: 40%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                max-width: 300px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .song-list img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .duration {
+                font-size: 0.7em;
+                margin-right: 40%;
+            }
+            .song-details {
+                margin-right: 40%;
+            }
+            
+        
+        }
+ 
+  
+
+  
+  
+  
+  
+  
+ 
+  
+ 
+  
+  
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="music-player">
+        
+            <div class="song-details">
+                <h2>Music Player</h2>
+                <p>Songs List</p>
+               
+            </div>
+        
+        
+        <ul class="song-list">
+            <a href="MusicPlayer1.html">
+                <li onclick="playSong(4)">
+                    <img src="https://i1.sndcdn.com/artworks-1IFjYsc6lmMydWE2-bvK4zQ-t500x500.jpg" alt="Naina">
+                    <span>Naina</span>
+                    <span class="duration">3:03</span>
+                </li>
+            </a>
+            <a href="MusicPlayer5.html">
+            <li onclick="playSong(1)">
+                <img src="https://cover.djpunjab.is/55771/300x700/four-me-ep-karan-aujla.webp" alt="Antitode">
+                <span>Antitode</span>
+                <span class="duration">3:04</span>
+            </li>
+            </a>
+            <a href="MusicPlayer3.html">
+            <li onclick="playSong(2)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCUDXhYmkJs2jWbCOetrG9w1M0Eom_CLp8jQ&s" alt="Bonita">
+                <span>Bonita</span>
+                <span class="duration">3:01</span>
+            </li>
+            </a>
+            <a href="MusicPlayer4.html">
+            <li onclick="playSong(3)">
+                <img src="https://i.ytimg.com/vi/mVhOvDe1bVw/maxresdefault.jpg" alt="Lehnga">
+                <span>Lehnga</span>
+                <span class="duration">4:08</span>
+            </li>
+            </a>
+        </ul>
+
+        <audio id="audioPlayer"></audio>
+    </div>
+   </div>
+
+    <script>
+        // script.js
+
+const audioPlayer = document.getElementById('audioPlayer');
+const playPauseBtn = document.getElementById('playPause');
+const songTitle = document.getElementById('songTitle');
+const songArtist = document.getElementById('songArtist');
+const volumeControl = document.getElementById('volumeControl');
+
+let isPlaying = false;
+let currentSongIndex = 0;
+
+const songs = [
+    { title: "Phool", artist: "Sujan Chapagain", src: "songs/phool.mp3", cover: "images/phool.jpg", duration: "5:02" },
+    { title: "Ve Kamleya", artist: "Artist Name", src: "songs/ve_kamleya.mp3", cover: "images/ve_kamleya.jpg", duration: "3:04" },
+    { title: "Golden Hour", artist: "Artist Name", src: "songs/golden_hour.mp3", cover: "images/golden_hour.jpg", duration: "3:01" },
+    { title: "Itni Si Baat", artist: "Artist Name", src: "songs/itni_si_baat.mp3", cover: "images/itni_si_baat.jpg", duration: "4:08" },
+    { title: "Pehle Bhi Main", artist: "Artist Name", src: "songs/pehle_bhi_main.mp3", cover: "images/pehle_bhi_main.jpg", duration: "5:03" }
+];
+
+function loadSong(index) {
+    const song = songs[index];
+    audioPlayer.src = song.src;
+    songTitle.textContent = song.title;
+    songArtist.textContent = song.artist;
+    document.querySelector('.album-cover').src = song.cover;
+    currentSongIndex = index;
+}
+
+function togglePlayPause() {
+    if (isPlaying) {
+        audioPlayer.pause();
+        playPauseBtn.textContent = "▶️";
+    } else {
+        audioPlayer.play();
+        playPauseBtn.textContent = "⏸️";
+    }
+    isPlaying = !isPlaying;
+}
+
+function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    loadSong(currentSongIndex);
+    audioPlayer.play();
+    playPauseBtn.textContent = "⏸️";
+    isPlaying = true;
+}
+
+function nextSong() {
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    loadSong(currentSongIndex);
+    audioPlayer.play();
+    playPauseBtn.textContent = "⏸️";
+    isPlaying = true;
+}
+
+function playSong(index) {
+    loadSong(index);
+    audioPlayer.play();
+    playPauseBtn.textContent = "⏸️";
+    isPlaying = true;
+}
+
+function changeVolume() {
+    audioPlayer.volume = volumeControl.value;
+}
+
+// Load the first song by default
+loadSong(currentSongIndex);
+
+    </script>
+</body>
+</html>
+
