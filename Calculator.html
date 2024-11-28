@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+body {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(40, 37, 37);
+    background-image:url(https://img.freepik.com/free-photo/top-view-finances-elements-arrangement-with-copy-space_23-2148793719.jpg) ;
+    background-size: cover;
+}
+
+.calculator {
+    padding: 5px;
+    border: 2px solid #000;
+    border-radius: 16px;
+    box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.8);
+    border: 20px solid #789DBC;
+    margin-left: 50px;
+    margin-top: 25px;
+  
+}
+
+input {
+    width: 320px;
+    padding: 24px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0px 0px 8px pink;
+    font-size: 25px;
+    text-align: right;
+    border: 5px solid rgba(244, 11, 166, 0.717);
+    color:white;
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  
+}
+
+input::placeholder {
+    color: white;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 24px;
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 35px;
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 1px 1PX #CDC1FF;
+}
+
+.ac,
+.del {
+    font-size: 20px;
+}
+
+button:hover {
+    color: #fff;
+    background: #F7C8E0;
+}
+
+.equalBtn {
+    background: #F7C8E0;
+    
+}
+
+.operator {
+    color: #F7C8E0;
+    
+   
+}
+
+@media (max-width: 768px) {
+            .calculator {
+                max-width: 300px;
+            }
+
+            button {
+                font-size: 20px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calculator {
+                max-width: 280px;
+            }
+
+            input {
+                font-size: 20px;
+                padding: 12px;
+            }
+
+            button {
+                font-size: 18px;
+                height: 45px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="calculator container" >
+        <input type="text" placeholder="0" id="inputBox" readonly>
+        <div>
+            <button class="operator  ac">AC</button>
+            <button class="operator del">DEL</button>
+            <button class="operator">%</button>
+            <button class="operator">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equalBtn">=</button>
+        </div>
+    </div>
+
+
+    <script>
+  let display = document.getElementById('inputBox');
+let button = document.querySelectorAll('button');
+let buttonArray = Array.from(button);
+let string = '';
+buttonArray.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+
+        if (e.target.innerHTML == 'DEL') {
+            string = string.substring(0, string.length - 1);
+            display.value = string;
+        } else if (e.target.innerHTML == 'AC') {
+            string = '';
+            display.value = string;
+
+        } else if (e.target.innerHTML == '=') {
+            string = eval(string);
+            display.value = string;
+        } else {
+            string += e.target.innerHTML;
+            display.value = string;
+        }
+    })
+})
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
